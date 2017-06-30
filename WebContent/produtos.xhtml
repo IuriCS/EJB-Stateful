@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<title>Carrinho de compras</title>
+</h:head>
+<h:body>
+
+	<h:form>
+		<h:panelGrid columns="2">
+			<h:column>
+				<h:outputLabel value="Produto: " />
+			</h:column>
+			<h:column>
+				<h:inputText value="#{carrinhoMB.produto}" />
+			</h:column>
+		</h:panelGrid>
+		<h:commandButton action="#{carrinhoMB.add()}"
+			value="Adicionar Produto" />
+
+		<hr />
+
+		<h:outputLabel value="Protudos no carrinho" />
+		<hr />
+		<h:dataTable title="Produtos no carrinho"
+			value="#{carrinhoMB.produtos}" var="produto" border="1">
+			<h:column>
+				<h:outputText value="#{produto}" />
+			</h:column>
+			<h:column>
+				<h:commandButton action="#{carrinhoMB.remove(produto)}"
+					value="Remover" />
+			</h:column>
+
+
+		</h:dataTable>
+	</h:form>
+
+</h:body>
+</html>
